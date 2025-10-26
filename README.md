@@ -3,3 +3,10 @@
 where I share a bit about myself and showcase selected projects.
 
 **Note**: the web-page is currently work in progress and expected to be completed by 31/12/2025.
+
+To add:
+- [ ] Projects / portfolio
+- [ ] Skills
+- [ ] Hobbies
+- [ ] Expanded about me section
+- [ ] Pictures
