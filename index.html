@@ -56,12 +56,6 @@
   header .links { margin: 0 0 16px; }
   header .links a { margin-right: 14px; }
 
-  @media (max-width: 480px) {
-    header { flex-direction: column; align-items: center; text-align: center; }
-    header .links a { margin: 0 7px; }
-    nav { justify-content: center; }
-  }
-
   nav { display: flex; flex-wrap: wrap; gap: 6px; }
   nav a {
     font-size: .875rem;
@@ -73,11 +67,14 @@
   }
   nav a:hover { color: var(--accent); border-color: var(--accent); }
 
-  /* ── Shared ──────────────────────────────────────────── */
-  a {
-    color: var(--accent);
-    text-decoration: none;
+  @media (max-width: 480px) {
+    header { flex-direction: column; align-items: center; text-align: center; }
+    header .links a { margin: 0 7px; }
+    nav { justify-content: center; }
   }
+
+  /* ── Shared ──────────────────────────────────────────── */
+  a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
   section { margin: 44px 0; }
@@ -101,25 +98,12 @@
     gap: 4px;
   }
   .entry-header .left { display: flex; flex-direction: column; }
-  .entry-title {
-    font-weight: 600;
-    font-size: 1rem;
-  }
-  .entry-sub {
-    color: var(--muted);
-    font-size: .9rem;
-  }
-  .entry-date {
-    font-size: .85rem;
-    color: var(--muted);
-    white-space: nowrap;
-  }
-  .entry-summary {
-    margin: 6px 0 0;
-    color: var(--text);
-  }
+  .entry-title { font-weight: 600; font-size: 1rem; }
+  .entry-sub { color: var(--muted); font-size: .9rem; }
+  .entry-date { font-size: .85rem; color: var(--muted); white-space: nowrap; }
+  .entry-summary { margin: 6px 0 0; }
 
-  /* role list inside a work entry */
+  /* nested roles inside a work entry */
   .roles { margin: 10px 0 0; }
   .role { margin-bottom: 14px; }
   .role-header {
@@ -129,23 +113,33 @@
     gap: 4px;
     margin-bottom: 4px;
   }
-  .role-title {
-    font-weight: 500;
-    font-size: .95rem;
-  }
-  .role-date {
-    font-size: .82rem;
-    color: var(--muted);
-  }
+  .role-title { font-weight: 500; font-size: .95rem; }
+  .role-date { font-size: .82rem; color: var(--muted); }
+
   ul.highlights {
     margin: 4px 0 0;
     padding-left: 20px;
-    color: var(--text);
   }
   ul.highlights li { margin-bottom: 3px; font-size: .93rem; }
 
+  /* ── Cert list ───────────────────────────────────────── */
+  .cert-list { list-style: none; padding: 0; margin: 0; }
+  .cert-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: .93rem;
+  }
+  .cert-list li:last-child { border-bottom: none; }
+  .cert-name { font-weight: 500; }
+  .cert-meta { color: var(--muted); font-size: .85rem; }
+
   /* ── Skills ──────────────────────────────────────────── */
-  .skill-group { margin-bottom: 16px; }
+  .skill-group { margin-bottom: 18px; }
   .skill-group-name {
     font-size: .8rem;
     text-transform: uppercase;
@@ -178,6 +172,45 @@
   .lang-name { font-weight: 600; font-size: .95rem; }
   .lang-level { font-size: .85rem; color: var(--muted); }
 
+  /* ── Beyond work ─────────────────────────────────────── */
+  .interests-block { margin-bottom: 24px; }
+  .interests-label {
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .hobby-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+    gap: 8px;
+  }
+  .hobby-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: .9rem;
+  }
+  .hobby-icon { font-size: 1.2rem; line-height: 1; flex-shrink: 0; }
+
+  .volunteer-list { list-style: none; padding: 0; margin: 0; }
+  .volunteer-list li {
+    padding: 5px 0;
+    font-size: .93rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .volunteer-list li:last-child { border-bottom: none; }
+  .vol-role { color: var(--muted); font-size: .85rem; }
+
   /* ── Footer ──────────────────────────────────────────── */
   footer {
     margin-top: 60px;
@@ -207,6 +240,7 @@
       <a href="#education">Education</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
+      <a href="#beyond">Beyond work</a>
       <a href="#languages">Languages</a>
     </nav>
   </div>
@@ -218,11 +252,25 @@
 <section id="about">
   <h2>About</h2>
   <p>
-    Data Scientist with a background in applied machine learning, forecasting, and quantitative
-    methods, currently leading a small data team while staying hands-on in modeling and analysis.
-    Experienced in building analytical approaches from the ground up in fast-moving environments
-    and working cross-functionally with product and engineering. Strong in Python and SQL, with
-    clear communication across technical and non-technical audiences.
+    I'm a data scientist based in the Netherlands with a route into the field that started somewhere
+    unexpected: a Human Ecology degree from College of the Atlantic, a tiny school on the coast of
+    Maine known for rubber boots and genuine environmental conviction. I followed that with an MSc in
+    Data Science at Maastricht University and haven't looked back — except to notice that the ecology
+    background keeps coming back in useful ways.
+  </p>
+  <p>
+    Right now I lead the data team at <a href="https://stratopo.nl/nl/" target="_blank" rel="noopener noreferrer">StraTopo</a>,
+    building geospatial models for sustainable mobility. I like problems where data connects to the
+    physical world: land use, cities, infrastructure, climate. My work history is deliberately varied —
+    quantum ML for my thesis, time-series forecasting for industrial software, satellite image
+    classification, gene expression analysis — and I've found that moving between domains keeps the
+    thinking sharp.
+  </p>
+  <p>
+    I care about AI that's useful and grounded: in real data, clear methodology, and honest
+    communication of uncertainty. I'm particularly drawn to the intersection of geospatial modeling
+    and climate action, and try to stay current in that space through courses, summer schools, and
+    actually reading papers.
   </p>
 </section>
 
@@ -244,8 +292,8 @@
       <span class="entry-date">Mar 2025 – present</span>
     </div>
     <p class="entry-summary">
-      Joined as the company's first data scientist; improved existing data practices and workflows,
-      led the first team hires, and was promoted to Team Lead eight months into the job.
+      Joined as the company's first data scientist. Improved existing data practices and workflows,
+      led the first team hires, and was promoted to Team Lead eight months in.
     </p>
     <div class="roles">
       <div class="role">
@@ -260,13 +308,13 @@
       </div>
       <div class="role">
         <div class="role-header">
-          <span class="role-title">Geospatial Data Scientist</span>
+          <span class="role-title">Geospatial Data Scientist, Project Lead</span>
           <span class="role-date">Mar 2025 – present</span>
         </div>
         <ul class="highlights">
-          <li>Improved the reproducibility, rigor, and code quality of existing algorithms and workflows.</li>
-          <li>Collaborated with engineering on a major app and database rebuild; contributed to data modeling decisions and ensured consistency of results.</li>
-          <li>Carried work end-to-end: from data preparation and modeling through interpretation, visualization, and delivery to non-technical stakeholders.</li>
+          <li>Develop data-driven models of sustainable mobility, combining heterogeneous large-scale geospatial datasets.</li>
+          <li>Design algorithms for efficient spatiotemporal routing under time and computational constraints.</li>
+          <li>End-to-end workflow: data preprocessing, modeling, interpretation, visualization, and delivery to non-technical stakeholders.</li>
         </ul>
       </div>
     </div>
@@ -279,14 +327,14 @@
         <span class="entry-title">
           <a href="https://iconpro.com/en/" target="_blank" rel="noopener noreferrer">IconPro – A.I. Solutions</a>
         </span>
-        <span class="entry-sub">Student Data Scientist · Aachen, DE</span>
+        <span class="entry-sub">Data Scientist – Forecasting · Aachen, DE</span>
       </div>
       <span class="entry-date">Feb 2022 – Aug 2022</span>
     </div>
     <p class="entry-summary">
-      Researched, implemented, and evaluated time-series forecasting methods (ARIMA, Exponential
-      Smoothing, Random Forest) for real-time industrial applications, and collaborated with
-      developers on integration into production software.
+      Started as an intern; researched, implemented, and evaluated time-series algorithms (ARIMA,
+      Exponential Smoothing, Random Forest) for real-time industrial forecasting, and collaborated
+      with developers on integration into production software.
     </p>
   </div>
 
@@ -302,9 +350,35 @@
       <span class="entry-date">Aug 2021 – Aug 2024</span>
     </div>
     <p class="entry-summary">
-      Supported data and AI-related projects at a university innovation centre, acting as a bridge
-      between technical topics and non-specialist stakeholders and collaborating on
-      cross-institutional research initiatives.
+      Point person for data and AI-related activities at a university innovation centre — bridging
+      technical topics and non-specialist stakeholders, and contributing to cross-institutional
+      research initiatives.
+    </p>
+  </div>
+
+  <!-- Tutor -->
+  <div class="entry">
+    <div class="entry-header">
+      <div class="left">
+        <span class="entry-title">Maastricht University – SBE</span>
+        <span class="entry-sub">Academic Tutor: Calculus &amp; Programming · Maastricht, NL</span>
+      </div>
+      <span class="entry-date">Jan 2023 – Mar 2023</span>
+    </div>
+  </div>
+
+  <!-- ICanCode -->
+  <div class="entry">
+    <div class="entry-header">
+      <div class="left">
+        <span class="entry-title">ICanCode School</span>
+        <span class="entry-sub">Coding Instructor &amp; Curriculum Developer · Maastricht, NL</span>
+      </div>
+      <span class="entry-date">Sep 2021 – Jun 2022</span>
+    </div>
+    <p class="entry-summary">
+      Taught young students algorithmic thinking, programming, robotics, and web development;
+      contributed to curriculum design.
     </p>
   </div>
 </section>
@@ -319,14 +393,14 @@
     <div class="entry-header">
       <div class="left">
         <span class="entry-title">Maastricht University</span>
-        <span class="entry-sub">M.Sc. Data Science · Maastricht, NL</span>
+        <span class="entry-sub">M.Sc. Data Science and AI · Maastricht, NL</span>
       </div>
       <span class="entry-date">Sep 2020 – Jul 2024</span>
     </div>
     <ul class="highlights">
-      <li>Computational statistics, experiment design, and mathematical optimization</li>
-      <li>Machine learning, forecasting, and model evaluation</li>
-      <li>Operations research and graph theory</li>
+      <li>Machine learning, computer vision, quantum AI, explainable AI</li>
+      <li>Forecasting, signal and image processing</li>
+      <li>Computational statistics, mathematical optimization, operations research, graph theory</li>
     </ul>
   </div>
 
@@ -339,9 +413,37 @@
       <span class="entry-date">Sep 2016 – Jun 2020</span>
     </div>
     <ul class="highlights">
-      <li>Data analytics, differential equations, linear algebra, and quantitative methods</li>
+      <li>Climate science, earth sciences, ecology, environmental chemistry</li>
+      <li>Geospatial analysis, data analytics, differential equations, linear algebra</li>
     </ul>
   </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <div class="left">
+        <span class="entry-title">École d'Humanité</span>
+        <span class="entry-sub">International Diploma · Hasliberg, Switzerland</span>
+      </div>
+      <span class="entry-date">Sep 2014 – Jun 2016</span>
+    </div>
+  </div>
+
+  <!-- Certificates as a sub-block -->
+  <h3 style="font-size:.9rem; font-weight:600; margin: 28px 0 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em;">Further Learning</h3>
+  <ul class="cert-list">
+    <li>
+      <span class="cert-name">GIS for Climate Action</span>
+      <span class="cert-meta">Esri · Apr 2025</span>
+    </li>
+    <li>
+      <span class="cert-name">GIS and Science for Climate, Society, and Territory</span>
+      <span class="cert-meta">University of Padova · Aug 2023</span>
+    </li>
+    <li>
+      <span class="cert-name">Climate Change AI Summer School</span>
+      <span class="cert-meta">Climate Change AI · Jul 2023</span>
+    </li>
+  </ul>
 </section>
 
 <!-- ──────────────────────────────────────────────────────
@@ -366,8 +468,31 @@
     <p class="entry-summary">
       Designed a mutation-based evolutionary search algorithm to find the optimal architecture
       of a hybrid quantum-classical GAN — framing architecture search as a structured optimization
-      problem and evaluating models systematically across performance, efficiency, and trade-off
-      criteria.
+      problem and evaluating models across performance, efficiency, and trade-off criteria.
+    </p>
+    <ul class="highlights">
+      <li>Grade: 9.0 / 10.0 &nbsp;·&nbsp;
+        <a href="https://github.com/BiancaMass/EVOL-WGAN-COMPLETE" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <div class="left">
+        <span class="entry-title">
+          <a href="https://github.com/BiancaMass/EuroSAT_classification"
+             target="_blank" rel="noopener noreferrer">
+            Land Classification through Satellite Imagery
+          </a>
+        </span>
+        <span class="entry-sub">Course Project · Maastricht University</span>
+      </div>
+      <span class="entry-date">Oct 2022 – Jan 2023</span>
+    </div>
+    <p class="entry-summary">
+      Implemented and optimized multiple CNN architectures for land-type classification using
+      Sentinel-2 data, including an ablation study on resource efficiency and interpretability.
     </p>
     <ul class="highlights">
       <li>Grade: 9.0 / 10.0</li>
@@ -389,7 +514,7 @@
     </div>
     <p class="entry-summary">
       Designed and automated a PCA-based analysis pipeline for gene expression data to surface
-      hidden significant variables, combining statistical methodology with reproducible tooling.
+      hidden significant variables — combining statistical methodology with reproducible tooling.
     </p>
     <ul class="highlights">
       <li>Grade: 4.0 / 4.0</li>
@@ -404,53 +529,111 @@
   <h2>Skills</h2>
 
   <div class="skill-group">
-    <div class="skill-group-name">Core Tools</div>
+    <div class="skill-group-name">Languages</div>
     <span class="pill">Python</span>
     <span class="pill">SQL</span>
     <span class="pill">R</span>
-    <span class="pill">Git</span>
     <span class="pill">Bash</span>
-  </div>
-
-  <div class="skill-group">
-    <div class="skill-group-name">Analytics Methods</div>
-    <span class="pill">Experiment design &amp; hypothesis testing</span>
-    <span class="pill">Cohort &amp; segmentation analysis</span>
-    <span class="pill">Time-series analysis &amp; forecasting</span>
-    <span class="pill">Regression &amp; classification</span>
-    <span class="pill">Anomaly detection</span>
-    <span class="pill">Statistical analysis</span>
-    <span class="pill">Model evaluation</span>
-    <span class="pill">Data visualization</span>
+    <span class="pill">LaTeX</span>
   </div>
 
   <div class="skill-group">
     <div class="skill-group-name">Python Ecosystem</div>
+    <span class="pill">PyTorch</span>
     <span class="pill">scikit-learn</span>
+    <span class="pill">TensorFlow / Keras</span>
     <span class="pill">Pandas</span>
     <span class="pill">NumPy</span>
     <span class="pill">SciPy</span>
     <span class="pill">Matplotlib</span>
+    <span class="pill">Seaborn</span>
     <span class="pill">Plotly</span>
-    <span class="pill">PyTorch</span>
+    <span class="pill">PennyLane</span>
   </div>
 
   <div class="skill-group">
-    <div class="skill-group-name">Data Infrastructure</div>
+    <div class="skill-group-name">R Ecosystem</div>
+    <span class="pill">dplyr</span>
+    <span class="pill">tidyr</span>
+    <span class="pill">ggplot2</span>
+    <span class="pill">Shiny</span>
+    <span class="pill">knitr</span>
+  </div>
+
+  <div class="skill-group">
+    <div class="skill-group-name">GIS &amp; Spatial</div>
+    <span class="pill">QGIS</span>
+    <span class="pill">ArcGIS</span>
+    <span class="pill">PostGIS</span>
+    <span class="pill">psycopg2</span>
+  </div>
+
+  <div class="skill-group">
+    <div class="skill-group-name">Data &amp; Dev Tools</div>
     <span class="pill">PostgreSQL</span>
-    <span class="pill">Large-scale datasets</span>
-    <span class="pill">Data quality &amp; reproducibility</span>
     <span class="pill">Docker</span>
-    <span class="pill">Unix/Linux</span>
+    <span class="pill">Git</span>
+    <span class="pill">Unix / Linux</span>
+    <span class="pill">Jupyter</span>
   </div>
 
   <div class="skill-group">
-    <div class="skill-group-name">Cross-functional Work</div>
-    <span class="pill">Stakeholder communication</span>
-    <span class="pill">Problem framing</span>
-    <span class="pill">Decision support</span>
-    <span class="pill">Cross-functional collaboration</span>
-    <span class="pill">Documentation</span>
+    <div class="skill-group-name">Methods &amp; Domains</div>
+    <span class="pill">Geospatial modeling</span>
+    <span class="pill">Time-series forecasting</span>
+    <span class="pill">Computer vision</span>
+    <span class="pill">Experiment design</span>
+    <span class="pill">Statistical analysis</span>
+    <span class="pill">Quantum ML</span>
+    <span class="pill">Remote sensing</span>
+    <span class="pill">Data visualization</span>
+    <span class="pill">Model evaluation</span>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────────────────
+     BEYOND WORK
+─────────────────────────────────────────────────────── -->
+<section id="beyond">
+  <h2>Beyond work</h2>
+
+  <div class="interests-block">
+    <div class="interests-label">What I'm drawn to professionally</div>
+    <span class="pill">AI for Climate</span>
+    <span class="pill">Remote Sensing</span>
+    <span class="pill">Trustworthy AI</span>
+    <span class="pill">Computer Vision</span>
+    <span class="pill">Geospatial Modelling</span>
+  </div>
+
+  <div class="interests-block">
+    <div class="interests-label">Off the clock</div>
+    <div class="hobby-grid">
+      <div class="hobby-card"><span class="hobby-icon">🚲</span> Biking &amp; bikepacking</div>
+      <div class="hobby-card"><span class="hobby-icon">🧗</span> Bouldering</div>
+      <div class="hobby-card"><span class="hobby-icon">🏋️</span> CrossFit</div>
+      <div class="hobby-card"><span class="hobby-icon">🍳</span> Cooking</div>
+      <div class="hobby-card"><span class="hobby-icon">📚</span> Books</div>
+      <div class="hobby-card"><span class="hobby-icon">♟️</span> Board games</div>
+    </div>
+  </div>
+
+  <div class="interests-block">
+    <div class="interests-label">Volunteer</div>
+    <ul class="volunteer-list">
+      <li>
+        <span>Dept. of Advanced Computing Sciences, Maastricht University</span>
+        <span class="vol-role">Student Ambassador</span>
+      </li>
+      <li>
+        <span>International Student Services, College of the Atlantic</span>
+        <span class="vol-role">Selection Committee Member</span>
+      </li>
+      <li>
+        <span>Outing Club, College of the Atlantic</span>
+        <span class="vol-role">Outdoor Guide &amp; Trainer</span>
+      </li>
+    </ul>
   </div>
 </section>
 
