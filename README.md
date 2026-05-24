@@ -6,6 +6,5 @@ where I share a bit about myself and showcase selected projects.
 
 To add:
 - [ ] Projects / portfolio
-- [ ] Hobbies
 - [ ] Expanded about me section
 - [ ] Pictures
