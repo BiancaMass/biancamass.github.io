@@ -2,102 +2,461 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bianca Massacci - Geospatial Data Scientist</title>
+<title>Bianca Massacci — Data Scientist</title>
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <style>
   :root {
     color-scheme: dark;
     --bg: #121212;
+    --surface: #1a1a1a;
+    --surface2: #222;
     --text: #e0e0e0;
+    --muted: #999;
     --accent: #5ea3ff;
-    --border: #444;
+    --border: #333;
   }
+
+  * { box-sizing: border-box; }
 
   body {
     background: var(--bg);
     color: var(--text);
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Helvetica, Arial, sans-serif;
-    max-width: 720px;
-    margin: 40px auto;
-    padding: 0 16px;
-    line-height: 1.6;
+    max-width: 740px;
+    margin: 48px auto;
+    padding: 0 20px;
+    line-height: 1.65;
   }
 
-  header h1 { margin: 0; }
-  nav a { margin-right: 12px; }
+  /* ── Header ─────────────────────────────────────────── */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 24px;
+    margin-bottom: 8px;
+  }
+  header h1 { margin: 0 0 4px; font-size: 2rem; }
+  header .subtitle {
+    color: var(--muted);
+    margin: 0 0 12px;
+    font-size: 1rem;
+  }
+  header .links { margin: 0 0 16px; }
+  header .links a { margin-right: 14px; }
 
+  nav { display: flex; flex-wrap: wrap; gap: 6px; }
+  nav a {
+    font-size: .875rem;
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  nav a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ── Shared ──────────────────────────────────────────── */
   a {
     color: var(--accent);
     text-decoration: none;
-    border-bottom: 1px solid var(--accent);
+  }
+  a:hover { text-decoration: underline; }
+
+  section { margin: 44px 0; }
+  section h2 {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+    margin-bottom: 20px;
   }
 
+  /* ── Entry blocks (work / education / projects) ──────── */
+  .entry { margin-bottom: 28px; }
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .entry-header .left { display: flex; flex-direction: column; }
+  .entry-title {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .entry-sub {
+    color: var(--muted);
+    font-size: .9rem;
+  }
+  .entry-date {
+    font-size: .85rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .entry-summary {
+    margin: 6px 0 0;
+    color: var(--text);
+  }
+
+  /* role list inside a work entry */
+  .roles { margin: 10px 0 0; }
+  .role { margin-bottom: 14px; }
+  .role-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+  .role-title {
+    font-weight: 500;
+    font-size: .95rem;
+  }
+  .role-date {
+    font-size: .82rem;
+    color: var(--muted);
+  }
+  ul.highlights {
+    margin: 4px 0 0;
+    padding-left: 20px;
+    color: var(--text);
+  }
+  ul.highlights li { margin-bottom: 3px; font-size: .93rem; }
+
+  /* ── Skills ──────────────────────────────────────────── */
+  .skill-group { margin-bottom: 16px; }
+  .skill-group-name {
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
   .pill {
     display: inline-block;
-    padding: 2px 8px;
+    padding: 2px 10px;
     border: 1px solid var(--border);
     border-radius: 999px;
-    margin: 2px 6px 0 0;
-    font-size: .9em;
-    background: #1e1e1e;
+    margin: 3px 4px 3px 0;
+    font-size: .875rem;
+    background: var(--surface2);
   }
 
-  section { margin: 28px 0; }
-  footer { font-size: .9em; color: #999; }
+  /* ── Languages ───────────────────────────────────────── */
+  .lang-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+  }
+  .lang-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .lang-name { font-weight: 600; font-size: .95rem; }
+  .lang-level { font-size: .85rem; color: var(--muted); }
+
+  /* ── Footer ──────────────────────────────────────────── */
+  footer {
+    margin-top: 60px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: .85rem;
+    color: var(--muted);
+  }
 </style>
 
+<!-- ──────────────────────────────────────────────────────
+     HEADER
+─────────────────────────────────────────────────────── -->
 <header>
   <h1>Bianca Massacci</h1>
-  <p>
-    Data Scientist • Netherlands •
-    <a href="mailto:bianca.massacci@proton.me" target="_blank" rel="noopener noreferrer">email</a> •
-    <a href="https://www.linkedin.com/in/bianca-massacci" target="_blank" rel="noopener noreferrer">LinkedIn</a> •
+  <p class="subtitle">Data Scientist · Analytics Lead · Maastricht, Netherlands</p>
+  <div class="links">
+    <a href="mailto:bianca.massacci@proton.me">email</a>
+    <a href="https://www.linkedin.com/in/bianca-massacci" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     <a href="https://github.com/BiancaMass" target="_blank" rel="noopener noreferrer">GitHub</a>
-  </p>
+  </div>
   <nav>
     <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-    <a href="resume.pdf">Resume</a>
+    <a href="#languages">Languages</a>
   </nav>
 </header>
 
+<!-- ──────────────────────────────────────────────────────
+     ABOUT
+─────────────────────────────────────────────────────── -->
 <section id="about">
   <h2>About</h2>
-  <p>I am a data scientist focused on geospatial applications. I earned a Master’s in Data Science and Artificial
-    Intelligence from Maastricht University in 2024, completing a thesis on optimizing hybrid Quantum-Classical GANs
-    for image generation under the supervision of <a
-            href="https://cris.maastrichtuniversity.nl/en/persons/menica-dibenedetto/" target="_blank" rel="noopener noreferrer">
-  Menica Dibenedetto</a>. Earlier, I obtained a Bachelor’s in Human Ecology from College of the Atlantic, USA,
-    providing me with a solid background in the environmental and climate sciences domain.
-</p>
-  <p>I am proficient in Python, SQL, R, with their Machine Learning (scikit-learn, XGBoost, TensorFlow) and
-    Geospatial packages (GeoPandas, Shapely, GDAL, QGIS).</p>
+  <p>
+    Data Scientist with a background in applied machine learning, forecasting, and quantitative
+    methods, currently leading a small data team while staying hands-on in modeling and analysis.
+    Experienced in building analytical approaches from the ground up in fast-moving environments
+    and working cross-functionally with product and engineering. Strong in Python and SQL, with
+    clear communication across technical and non-technical audiences.
+  </p>
 </section>
+
+<!-- ──────────────────────────────────────────────────────
+     EXPERIENCE
+─────────────────────────────────────────────────────── -->
+<section id="experience">
+  <h2>Experience</h2>
+
+  <!-- StraTopo -->
+  <div class="entry">
+    <div class="entry-header">
+      <div class="left">
+        <span class="entry-title">
+          <a href="https://stratopo.nl/nl/" target="_blank" rel="noopener noreferrer">StraTopo</a>
+        </span>
+        <span class="entry-sub">Maastricht, Netherlands</span>
+      </div>
+      <span class="entry-date">Mar 2025 – present</span>
+    </div>
+    <p class="entry-summary">
+      Joined as the company's first data scientist; improved existing data practices and workflows,
+      led the first team hires, and was promoted to Team Lead eight months into the job.
+    </p>
+    <div class="roles">
+      <div class="role">
+        <div class="role-header">
+          <span class="role-title">Team Lead</span>
+          <span class="role-date">Oct 2025 – present</span>
+        </div>
+        <ul class="highlights">
+          <li>Led the hiring process that created the company's data team; currently coordinating a team of three.</li>
+          <li>Own the data models and communication of findings with clients and the CEO; coordinate across management and engineering.</li>
+        </ul>
+      </div>
+      <div class="role">
+        <div class="role-header">
+          <span class="role-title">Geospatial Data Scientist</span>
+          <span class="role-date">Mar 2025 – present</span>
+        </div>
+        <ul class="highlights">
+          <li>Improved the reproducibility, rigor, and code quality of existing algorithms and workflows.</li>
+          <li>Collaborated with engineering on a major app and database rebuild; contributed to data modeling decisions and ensured consistency of results.</li>
+          <li>Carried work end-to-end: from data preparation and modeling through interpretation, visualization, and delivery to non-technical stakeholders.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- IconPro -->
+  <div class="entry">
+    <div class="entry-header">
+      <div class="left">
+        <span class="entry-title">
+          <a href="https://iconpro.com/en/" target="_blank" rel="noopener noreferrer">IconPro – A.I. Solutions</a>
+        </span>
+        <span class="entry-sub">Student Data Scientist · Aachen, DE</span>
+      </div>
+      <span class="entry-date">Feb 2022 – Aug 2022</span>
+    </div>
+    <p class="entry-summary">
+      Researched, implemented, and evaluated time-series forecasting methods (ARIMA, Exponential
+      Smoothing, Random Forest) for real-time industrial applications, and collaborated with
+      developers on integration into production software.
+    </p>
+  </div>
+
+  <!-- EDLAB -->
+  <div class="entry">
+    <div class="entry-header">
+      <div class="left">
+        <span class="entry-title">
+          <a href="https://www.maastrichtuniversity.nl/education/edlab" target="_blank" rel="noopener noreferrer">EDLAB – UM Centre for Teaching and Learning</a>
+        </span>
+        <span class="entry-sub">Student Technology Specialist &amp; Project Lead · Maastricht, NL</span>
+      </div>
+      <span class="entry-date">Aug 2021 – Aug 2024</span>
+    </div>
+    <p class="entry-summary">
+      Supported data and AI-related projects at a university innovation centre, acting as a bridge
+      between technical topics and non-specialist stakeholders and collaborating on
+      cross-institutional research initiatives.
+    </p>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────────────────
+     EDUCATION
+─────────────────────────────────────────────────────── -->
+<section id="education">
+  <h2>Education</h2>
+
+  <div class="entry">
+    <div class="entry-header">
+      <div class="left">
+        <span class="entry-title">Maastricht University</span>
+        <span class="entry-sub">M.Sc. Data Science · Maastricht, NL</span>
+      </div>
+      <span class="entry-date">Sep 2020 – Jul 2024</span>
+    </div>
+    <ul class="highlights">
+      <li>Computational statistics, experiment design, and mathematical optimization</li>
+      <li>Machine learning, forecasting, and model evaluation</li>
+      <li>Operations research and graph theory</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <div class="left">
+        <span class="entry-title">College of the Atlantic</span>
+        <span class="entry-sub">B.A. Human Ecology · Maine, USA</span>
+      </div>
+      <span class="entry-date">Sep 2016 – Jun 2020</span>
+    </div>
+    <ul class="highlights">
+      <li>Data analytics, differential equations, linear algebra, and quantitative methods</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────────────────
+     PROJECTS
+─────────────────────────────────────────────────────── -->
 <section id="projects">
   <h2>Selected Projects</h2>
-  <article>
-    <h3><a href="[repo_or_demo_url]">[Project A]</a></h3>
-    <p>What it does, why, results.</p>
-    <ul>
-      <li>Code: <a href="[repo_url]">GitHub</a> • Demo: <a href="[demo_url]">link</a></li>
+
+  <div class="entry">
+    <div class="entry-header">
+      <div class="left">
+        <span class="entry-title">
+          <a href="https://biancamass.github.io/EVOL-WGAN-COMPLETE/Quantum_Thesis_Final.pdf"
+             target="_blank" rel="noopener noreferrer">
+            Evolutionary Optimization for Hybrid Quantum Image Generation GAN
+          </a>
+        </span>
+        <span class="entry-sub">M.Sc. Thesis · Maastricht University</span>
+      </div>
+      <span class="entry-date">Oct 2023 – Jun 2024</span>
+    </div>
+    <p class="entry-summary">
+      Designed a mutation-based evolutionary search algorithm to find the optimal architecture
+      of a hybrid quantum-classical GAN — framing architecture search as a structured optimization
+      problem and evaluating models systematically across performance, efficiency, and trade-off
+      criteria.
+    </p>
+    <ul class="highlights">
+      <li>Grade: 9.0 / 10.0</li>
     </ul>
-  </article>
-  <article>
-    <h3><a href="[url]">[Project B]</a></h3>
-    <p>Role and outcome</p>
-  </article>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <div class="left">
+        <span class="entry-title">
+          <a href="https://github.com/BiancaMass/Automated_PCA_MDIBL"
+             target="_blank" rel="noopener noreferrer">
+            PCA-Based Detection of Hidden Variables in Gene Expression Data
+          </a>
+        </span>
+        <span class="entry-sub">B.A. Thesis · MDI Biological Laboratory / College of the Atlantic</span>
+      </div>
+      <span class="entry-date">Jan 2020 – Jun 2020</span>
+    </div>
+    <p class="entry-summary">
+      Designed and automated a PCA-based analysis pipeline for gene expression data to surface
+      hidden significant variables, combining statistical methodology with reproducible tooling.
+    </p>
+    <ul class="highlights">
+      <li>Grade: 4.0 / 4.0</li>
+    </ul>
+  </div>
 </section>
+
+<!-- ──────────────────────────────────────────────────────
+     SKILLS
+─────────────────────────────────────────────────────── -->
 <section id="skills">
   <h2>Skills</h2>
-  <span class="pill">Python</span><span class="pill">Pandas</span><span class="pill">SQL</span>
-  <span class="pill">Scikit-learn</span><span class="pill">QGIS</span>
+
+  <div class="skill-group">
+    <div class="skill-group-name">Core Tools</div>
+    <span class="pill">Python</span>
+    <span class="pill">SQL</span>
+    <span class="pill">R</span>
+    <span class="pill">Git</span>
+    <span class="pill">Bash</span>
+  </div>
+
+  <div class="skill-group">
+    <div class="skill-group-name">Analytics Methods</div>
+    <span class="pill">Experiment design &amp; hypothesis testing</span>
+    <span class="pill">Cohort &amp; segmentation analysis</span>
+    <span class="pill">Time-series analysis &amp; forecasting</span>
+    <span class="pill">Regression &amp; classification</span>
+    <span class="pill">Anomaly detection</span>
+    <span class="pill">Statistical analysis</span>
+    <span class="pill">Model evaluation</span>
+    <span class="pill">Data visualization</span>
+  </div>
+
+  <div class="skill-group">
+    <div class="skill-group-name">Python Ecosystem</div>
+    <span class="pill">scikit-learn</span>
+    <span class="pill">Pandas</span>
+    <span class="pill">NumPy</span>
+    <span class="pill">SciPy</span>
+    <span class="pill">Matplotlib</span>
+    <span class="pill">Plotly</span>
+    <span class="pill">PyTorch</span>
+  </div>
+
+  <div class="skill-group">
+    <div class="skill-group-name">Data Infrastructure</div>
+    <span class="pill">PostgreSQL</span>
+    <span class="pill">Large-scale datasets</span>
+    <span class="pill">Data quality &amp; reproducibility</span>
+    <span class="pill">Docker</span>
+    <span class="pill">Unix/Linux</span>
+  </div>
+
+  <div class="skill-group">
+    <div class="skill-group-name">Cross-functional Work</div>
+    <span class="pill">Stakeholder communication</span>
+    <span class="pill">Problem framing</span>
+    <span class="pill">Decision support</span>
+    <span class="pill">Cross-functional collaboration</span>
+    <span class="pill">Documentation</span>
+  </div>
 </section>
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:[bianca.massacci@proton.me]">bianca.massacci@proton.me</a></p>
+
+<!-- ──────────────────────────────────────────────────────
+     LANGUAGES
+─────────────────────────────────────────────────────── -->
+<section id="languages">
+  <h2>Languages</h2>
+  <div class="lang-grid">
+    <div class="lang-card">
+      <div class="lang-name">English</div>
+      <div class="lang-level">Native / fluent</div>
+    </div>
+    <div class="lang-card">
+      <div class="lang-name">Italian</div>
+      <div class="lang-level">Native / fluent</div>
+    </div>
+    <div class="lang-card">
+      <div class="lang-name">Spanish</div>
+      <div class="lang-level">Professional working proficiency</div>
+    </div>
+    <div class="lang-card">
+      <div class="lang-name">Dutch</div>
+      <div class="lang-level">Basic proficiency</div>
+    </div>
+  </div>
 </section>
+
 <footer>
   <p>Last updated: <script>document.write(new Date().toISOString().slice(0,10))</script></p>
 </footer>
