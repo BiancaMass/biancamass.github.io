@@ -33,7 +33,20 @@
     border-bottom: 1px solid var(--border);
     padding-bottom: 24px;
     margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
   }
+  header .header-photo {
+    flex-shrink: 0;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 2px solid var(--border);
+  }
+  header .header-text { flex: 1; min-width: 0; }
   header h1 { margin: 0 0 4px; font-size: 2rem; }
   header .subtitle {
     color: var(--muted);
@@ -42,6 +55,12 @@
   }
   header .links { margin: 0 0 16px; }
   header .links a { margin-right: 14px; }
+
+  @media (max-width: 480px) {
+    header { flex-direction: column; align-items: center; text-align: center; }
+    header .links a { margin: 0 7px; }
+    nav { justify-content: center; }
+  }
 
   nav { display: flex; flex-wrap: wrap; gap: 6px; }
   nav a {
@@ -173,21 +192,24 @@
      HEADER
 ─────────────────────────────────────────────────────── -->
 <header>
-  <h1>Bianca Massacci</h1>
-  <p class="subtitle">Data Scientist · Analytics Lead · Maastricht, Netherlands</p>
-  <div class="links">
-    <a href="mailto:bianca.massacci@proton.me">email</a>
-    <a href="https://www.linkedin.com/in/bianca-massacci" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    <a href="https://github.com/BiancaMass" target="_blank" rel="noopener noreferrer">GitHub</a>
+  <img class="header-photo" src=".metadata/MassacciBianca-photo.jpeg" alt="Bianca Massacci">
+  <div class="header-text">
+    <h1>Bianca Massacci</h1>
+    <p class="subtitle">Data Scientist · Data Team Lead · Maastricht, Netherlands</p>
+    <div class="links">
+      <a href="mailto:bianca.massacci@proton.me">bianca.massacci@proton.me</a>
+      <a href="https://www.linkedin.com/in/bianca-massacci" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/BiancaMass" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#languages">Languages</a>
+    </nav>
   </div>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#languages">Languages</a>
-  </nav>
 </header>
 
 <!-- ──────────────────────────────────────────────────────
